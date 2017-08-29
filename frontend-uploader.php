@@ -481,7 +481,10 @@ class Frontend_Uploader {
 		// No meta fields in field mapping, bailing
 		if ( !isset( $this->form_fields['meta'] ) || empty( $this->form_fields['meta'] ) )
 			return false;
-
+		
+		// New hook
+		do_action( 'pc_after_create_post', $post_id, $_POST );
+		
 		foreach ( $this->form_fields['meta'] as $meta_field ) {
 			if ( !isset( $_POST[$meta_field] ) )
 				continue;
